@@ -1,0 +1,100 @@
+// @include font-size($font-size);
+// @include font-size(16);
+@mixin font-size($size-value: $font-size) {
+  font-size: calc($size-value / $font-size) + rem;
+}
+
+// Define a base da fonte que pretende utilizar (valores ja são convertidos em rem).
+
+$font-size: 16; // tamanho padrão
+$line-height: 16; // tamanho padrão
+
+@mixin line-height($size-value: $line-height) {
+  line-height: calc($size-value / $line-height) + rem;
+}
+
+@mixin letter-spacing($letterspacing) {
+  letter-spacing: calc($letterspacing / 1000) * 1em;
+}
+
+//  @include text(color, font-size, font-weight, line-height, text-align, text-transform, letter-spacing);
+
+@mixin text(
+  $color: $black,
+  $fontSize: $font-size,
+  $fontWeight: $fontRegular,
+  $line-height: $line-height,
+  $textAlign: left,
+  $textTransform: initial,
+  $letterspacing: $letterspacing
+) {
+  color: $color;
+  @include font-size($fontSize);
+  font-weight: $fontWeight;
+  @include line-height($line-height);
+  @include letter-spacing($letterspacing);
+  text-align: $textAlign;
+  text-transform: $textTransform;
+}
+
+//  @include flex(align-items, justify-content, flex-direction, gap);
+
+@mixin flex($align, $justify, $direction, $gap, $wrap) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap + rem;
+  @if ($direction) {
+    flex-direction: $direction;
+  } @else {
+    flex-direction: row;
+  }
+  flex-wrap: $wrap;
+}
+
+// @include grid(grid-template-columns, 3, 3, 1);
+
+@mixin grid($grid-type, $num-of-cols, $row-gap, $column-gap: $row-gap) {
+  @supports (display: grid) {
+    display: grid;
+    #{$grid-type}: repeat($num-of-cols, auto);
+    grid-gap: ($row-gap + rem) ($column-gap + rem);
+  }
+}
+
+// @include ps(position, top, left, button, right);
+
+@mixin ps($position, $top, $left, $button, $right) {
+  position: $position;
+  top: $top;
+  left: $left;
+  bottom: $button;
+  right: $right;
+}
+
+// @include ps(color1, color2);
+
+@mixin gradient($color1, $color2) {
+  background: linear-gradient(0deg, $color2 0%, $color1 100%);
+}
+
+$breakpoints: (
+  '360': 360px,
+  '480': 480px,
+  '1024': 1024px,
+  '1280': 1280px,
+);
+
+// @include ps(color1, color2);
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
