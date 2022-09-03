@@ -5,12 +5,14 @@ import Details from './pages/pdp'
 
 export const Routers = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/pdp' element={<Details />} />
-      </Routes>
-    </Router>
+    <main>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/pdp' element={<Details />} />
+        </Routes>
+      </Router>
+    </main>
   )
 }

@@ -1,17 +1,13 @@
+import Footer from './components/footer'
+import Header from './components/header'
 import { Routers } from './routers'
 
 function App() {
   return (
     <>
-      <header>
-        <p>Logo</p>
-      </header>
-      <main>
-        <Routers />
-      </main>
-      <footer>
-        <p>Copy</p>
-      </footer>
+      <Header />
+      <Routers />
+      <Footer />
     </>
   )
 }
