@@ -5,13 +5,16 @@ export interface IChildren {
 // STATES CONTEXT
 export interface IStateContext {
   search: string
+  genres: IGenres[]
 }
 
 export interface IStateDefaultValues extends IStateContext {
   setSearch(search: string): void
 }
 
-export type TActionStateContext = { type: 'search'; search: string }
+export type TActionStateContext =
+  | { type: 'search'; search: string }
+  | { type: 'genres'; genres: IGenres[] }
 
 // MOVIES CONTEXT
 export interface IMoviesContext {
@@ -52,4 +55,9 @@ export interface IMoviesResult {
   video: boolean
   vote_average: number
   vote_count: number
+}
+
+export interface IGenres {
+  id: number
+  name: string
 }

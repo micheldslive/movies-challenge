@@ -12,26 +12,19 @@ export const Cards = () => {
 
   const { ref, inView } = useInView()
 
-  const {
-    status,
-    data,
-    error,
-    isFetching,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useInfiniteQuery(
-    ['results', search],
-    async ({ pageParam = 0 }) => {
-      const data = search
-        ? await searchByQuery(pageParam + 1, search)
-        : await getMovies(pageParam + 1)
-      return data
-    },
-    {
-      getNextPageParam: ({ page }) => page ?? page + 1,
-    },
-  )
+  const { status, data, isFetchingNextPage, fetchNextPage, hasNextPage } =
+    useInfiniteQuery(
+      ['results', search],
+      async ({ pageParam = 0 }) => {
+        const data = search
+          ? await searchByQuery(pageParam + 1, search)
+          : await getMovies(pageParam + 1)
+        return data
+      },
+      {
+        getNextPageParam: ({ page }) => page ?? page + 1,
+      },
+    )
 
   useEffect(() => {
     inView && fetchNextPage()
@@ -61,7 +54,11 @@ export const Cards = () => {
               onClick={() => fetchNextPage()}
               disabled={!hasNextPage || isFetchingNextPage}
             >
-              {isFetchingNextPage && <CircularProgress className='progress' />}
+              {isFetchingNextPage && (
+                <div className='preloading'>
+                  <CircularProgress className='progress' />
+                </div>
+              )}
             </button>
           </div>
         </>
