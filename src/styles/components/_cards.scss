@@ -1,0 +1,27 @@
+.cards-container {
+  .preloading {
+    min-height: 90vh;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cards-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+
+    .card-content {
+      & span.blur {
+        width: 100%;
+
+        .image {
+          object-fit: cover;
+          max-height: 350px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
