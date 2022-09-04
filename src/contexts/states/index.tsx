@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react'
+import { createContext, useContext, useReducer } from 'react'
 
 import {
   IChildren,
@@ -8,12 +8,12 @@ import {
 } from '@/core/types'
 
 const initialStates: IStateContext = {
-  loading: false,
+  search: '',
 }
 
 const contextState: IStateDefaultValues = {
   ...initialStates,
-  setLoading: () => false,
+  setSearch: () => '',
 }
 
 const StateContext = createContext(contextState)
@@ -21,22 +21,23 @@ const StateContext = createContext(contextState)
 const useStates = () => useContext(StateContext)
 
 export const reducer = (state: IStateContext, action: TActionStateContext) => {
-  const actions = {
-    loading: { ...state, loading: action.loading },
+  switch (action.type) {
+    case 'search':
+      return { ...state, search: action.search }
+    default:
+      return state
   }
-
-  return actions[action.type] || state
 }
 
 const StateProvider = ({ children }: IChildren) => {
   const [state, dispatch] = useReducer(reducer, initialStates)
 
-  const setLoading = (loading: boolean) => {
-    dispatch({ type: 'loading', loading })
+  const setSearch = (search: string) => {
+    dispatch({ type: 'search', search })
   }
 
   return (
-    <StateContext.Provider value={{ ...state, setLoading }}>
+    <StateContext.Provider value={{ ...state, setSearch }}>
       {children}
     </StateContext.Provider>
   )
