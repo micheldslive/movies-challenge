@@ -1,11 +1,11 @@
 import { memo } from 'react'
-import { GrSearch } from 'react-icons/gr'
+import SearchIcon from '@mui/icons-material/Search'
 
 const Search = () => {
   return (
     <div className='search'>
       <input type='text' placeholder='Pesquisa' aria-label='input' />
-      <GrSearch size={22} aria-label='svg' />
+      <SearchIcon aria-label='svg' />
     </div>
   )
 }
