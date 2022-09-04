@@ -1,15 +1,15 @@
 import { Routes, Route } from 'react-router-dom'
-import Cart from './pages/cart'
+import Checkout from './pages/checkout'
 import Home from './pages/home'
-import Details from './pages/pdp'
+import NotFound from './pages/404'
 
 export const Routers = () => {
   return (
     <main>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/pdp' element={<Details />} />
+        <Route path='/checkout' element={<Checkout />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </main>
   )
