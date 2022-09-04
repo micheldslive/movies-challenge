@@ -5,7 +5,7 @@ import Search from './index'
 import { getRenderer } from '@/core/tests/helpers'
 
 describe('<Search />', () => {
-  it('should have a element input and svg elements', () => {
+  it('should have a input and svg elements', () => {
     const { getByLabelText } = getRenderer(<Search />)
 
     const input = getByLabelText('input')
