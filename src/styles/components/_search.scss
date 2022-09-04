@@ -1,15 +1,18 @@
 .search {
+  display: flex;
   background: $white;
   border-radius: 5px;
   border: 2px solid $grey-2;
-  display: flex;
 
   input {
+    @include text('', 16, $fontLight, 16, left, '', 20);
     border-radius: 5px;
     padding: 9px;
     width: 25rem;
-    font-size: 16px;
-    font-weight: 300;
+    border-style: none;
+    &:focus {
+      outline: none;
+    }
 
     &::placeholder {
       color: $grey-2;

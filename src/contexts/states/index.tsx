@@ -1,20 +1,18 @@
-import { createContext, useContext, useReducer } from 'react'
-
+import { createContext, useContext, useEffect, useReducer } from 'react'
 import {
   IChildren,
   IStateContext,
   IStateDefaultValues,
   TActionStateContext,
 } from '@/core/types'
+import api from '@/core/api'
 
 const initialStates: IStateContext = {
   search: '',
+  genres: [],
 }
 
-const contextState: IStateDefaultValues = {
-  ...initialStates,
-  setSearch: () => '',
-}
+const contextState = {} as IStateDefaultValues
 
 const StateContext = createContext(contextState)
 
@@ -24,6 +22,8 @@ export const reducer = (state: IStateContext, action: TActionStateContext) => {
   switch (action.type) {
     case 'search':
       return { ...state, search: action.search }
+    case 'genres':
+      return { ...state, genres: action.genres }
     default:
       return state
   }
@@ -35,6 +35,17 @@ const StateProvider = ({ children }: IChildren) => {
   const setSearch = (search: string) => {
     dispatch({ type: 'search', search })
   }
+
+  // API GETTERS
+  const getGenres = async () => {
+    const { data } = await api.getAllGenres()
+
+    dispatch({ type: 'genres', genres: data.genres })
+  }
+
+  useEffect(() => {
+    getGenres()
+  }, [])
 
   return (
     <StateContext.Provider value={{ ...state, setSearch }}>

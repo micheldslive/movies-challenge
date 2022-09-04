@@ -1,4 +1,4 @@
-import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { AxiosRequestConfig } from 'axios'
 
 const API_KEY = import.meta.env.VITE_API_KEY || ''
 
