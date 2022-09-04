@@ -1,3 +1,10 @@
 .header-content {
-  background-color: $black;
+  background-color: $green-1;
+  height: 55px;
+  section {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
