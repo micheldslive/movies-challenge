@@ -1,10 +1,7 @@
 import { Box, Typography } from '@mui/material'
-import { purple } from '@mui/material/colors'
 import { Link } from 'react-router-dom'
 
 const NotFound = () => {
-  const primary = purple[500]
-
   return (
     <Box
       sx={{
