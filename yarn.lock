@@ -5207,6 +5207,11 @@ minimist@^1.2.0, minimist@^1.2.5, minimist@^1.2.6:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -5668,6 +5673,14 @@ quick-lru@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
+
+react-awesome-reveal@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-awesome-reveal/-/react-awesome-reveal-4.0.1.tgz#7b1f6932bb7255965afcbae735fb4585ebf826ab"
+  integrity sha512-6DQg14rAhEXbMsWbKHxFJBThUi6dZhpc4YsaCcSdh4dhiDRwYuCnAeSZYnhdkbCURP5dBJukWhVzlJrCuq81Cg==
+  dependencies:
+    react-intersection-observer "^9.4.0"
+    react-is "^18.2.0"
 
 react-dom@^18.2.0:
   version "18.2.0"
