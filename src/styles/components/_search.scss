@@ -1,0 +1,22 @@
+.search {
+  background: $white;
+  border-radius: 5px;
+  border: 2px solid $grey-2;
+  display: flex;
+
+  input {
+    border-radius: 5px;
+    padding: 9px;
+    width: 25rem;
+    font-size: 16px;
+    font-weight: 300;
+
+    &::placeholder {
+      color: $grey-2;
+    }
+  }
+
+  svg {
+    margin: 9px;
+  }
+}
