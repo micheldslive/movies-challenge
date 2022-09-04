@@ -11,7 +11,9 @@ const config = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: ['/node_modules/', 'config/tests'],
+  collectCoverageFrom: ['src/**/*.test.ts(x)?'],
   moduleNameMapper: {
+    '^.+\\.(css|less|scss)$': 'babel-jest',
     '@/(.*)': '<rootDir>/src/$1',
     [assetsKey]: 'ts-jest',
   },

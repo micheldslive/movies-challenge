@@ -1,0 +1,3 @@
+.logo {
+  @include text($white, 25, $fontBold, 20, left, uppercase, 50);
+}
