@@ -1,10 +1,10 @@
-import { memo } from 'react'
+import { Cards } from '@/components/cards'
 
 const Home = () => {
   return (
-    <div>
-      <p>HOME</p>
-    </div>
+    <section>
+      <Cards />
+    </section>
   )
 }
 
