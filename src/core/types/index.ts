@@ -29,6 +29,28 @@ export interface IMoviesDefaultValues extends IMoviesContext {
 
 export type TMoviesActionContext = { type: 'loading'; loading: boolean }
 
+// CART CONTEXT
+export interface ICartContext {
+  cart: IMovieCart[]
+}
+
+export interface ICartDefaultValues extends ICartContext {
+  add(add: IMovieCart): void
+  remove(id: number): void
+}
+
+export type TActionCartContext =
+  | { type: 'add'; add: IMovieCart }
+  | { type: 'remove'; remove: IMovieCart[] }
+
+export interface IMovieCart {
+  id: number
+  title: string
+  qtd: number
+  price: number
+  poster_path: string
+}
+
 // MOVIES DATA TYPES
 
 export interface IMoviesResults {
