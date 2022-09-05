@@ -1,9 +1,12 @@
 import { memo } from 'react'
 import CartIcon from '@mui/icons-material/ShoppingCart'
-import { useStates } from '@/contexts'
+import { useCart, useStates } from '@/contexts'
+import { Badge } from '@mui/material'
 
 const MinicartIcon = () => {
   const { cartOpen, setCartOpen } = useStates()
+  const { totalQuantityAndPrice } = useCart()
+  const { quantity } = totalQuantityAndPrice()
 
   return (
     <a
@@ -11,7 +14,9 @@ const MinicartIcon = () => {
       aria-label='link'
       onClick={() => setCartOpen(!cartOpen)}
     >
-      <CartIcon aria-label='svg' />
+      <Badge className='minicart-badge' badgeContent={quantity}>
+        <CartIcon aria-label='svg' />
+      </Badge>
     </a>
   )
 }
