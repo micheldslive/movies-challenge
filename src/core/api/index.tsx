@@ -2,7 +2,7 @@ import axios from 'axios'
 import { requestInterceptor } from './interceptors'
 
 const config = {
-  baseURL: import.meta.env.VITE_API_BASEURL || '',
+  baseURL: process.env.VITE_API_BASEURL || '',
 }
 
 const api = axios.create(config)

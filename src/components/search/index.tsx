@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
-import { useStates } from '@/contexts/states'
+import { useStates } from '@/contexts'
 
 const Search = () => {
   const { setSearch } = useStates()

@@ -1,6 +1,5 @@
-import { useCart } from '@/contexts/cart'
+import { useCart } from '@/contexts'
 import { IMovieCart } from '@/core/types'
-import { useEffect } from 'react'
 
 interface IAddButtonProps {
   item: IMovieCart

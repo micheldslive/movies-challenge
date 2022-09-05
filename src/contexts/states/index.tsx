@@ -18,7 +18,7 @@ const StateContext = createContext(contextState)
 
 const useStates = () => useContext(StateContext)
 
-export const reducer = (state: IStateContext, action: TActionStateContext) => {
+const reducer = (state: IStateContext, action: TActionStateContext) => {
   switch (action.type) {
     case 'search':
       return { ...state, search: action.search }
