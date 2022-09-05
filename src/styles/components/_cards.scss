@@ -8,7 +8,7 @@
     }
   }
   .cards-content {
-    @include grid(grid-template-columns, 4, 2, 2);
+    @include grid(grid-template-columns, 4, 1fr, 2, 2);
 
     .card-content {
       & span.blur {

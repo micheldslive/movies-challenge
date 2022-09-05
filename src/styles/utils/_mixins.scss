@@ -75,11 +75,17 @@ $line-height: 16; // tamanho padrão
 
 // @include grid(grid-template-columns, num-coluns-repeat, column-gap, row-gap);
 
-@mixin grid($grid-type, $num-of-cols, $row-gap, $column-gap: $row-gap) {
+@mixin grid(
+  $grid-type,
+  $num-of-cols,
+  $width-cols,
+  $row-gap,
+  $column-gap: $row-gap
+) {
   @supports (display: grid) {
     display: grid;
-    @if (check($grid-type) & check($num-of-cols)) {
-      #{$grid-type}: repeat($num-of-cols, auto);
+    @if (check($grid-type) & check($num-of-cols) & check($width-cols)) {
+      #{$grid-type}: repeat($num-of-cols, $width-cols);
     }
     @if (check($row-gap)) {
       row-gap: $row-gap + rem;
