@@ -13,6 +13,7 @@ import { AddButton } from '@/components/add'
 import { ImagePath } from '@/core/utils/imagePath'
 import { getPrice } from '@/core/utils/price'
 import 'react-lazy-load-image-component/src/effects/blur.css'
+import { AddFavorite } from '../add-wishlist'
 
 export const Card = ({ results }: IMoviesResults) => {
   return (
@@ -29,6 +30,15 @@ export const Card = ({ results }: IMoviesResults) => {
                       effect='blur'
                       src={ImagePath(poster_path)}
                       alt={title}
+                    />
+                    <AddFavorite
+                      item={{
+                        id,
+                        title,
+                        quantity: 1,
+                        poster_path,
+                        price: getPrice(vote_average),
+                      }}
                     />
                     <Box className='card-date' component='span'>
                       {moment(release_date).format('D [de]')}
@@ -57,17 +67,15 @@ export const Card = ({ results }: IMoviesResults) => {
                     <Box component='span' display='flex' alignItems='center'>
                       <Price rating={vote_average} />
                     </Box>
-                    <Box component='span' display='flex' alignItems='center'>
-                      <AddButton
-                        item={{
-                          id,
-                          title,
-                          qtd: 1,
-                          poster_path,
-                          price: getPrice(vote_average),
-                        }}
-                      />
-                    </Box>
+                    <AddButton
+                      item={{
+                        id,
+                        title,
+                        quantity: 1,
+                        poster_path,
+                        price: getPrice(vote_average),
+                      }}
+                    />
                   </Box>
                 </CardActionArea>
               </CardContainer>

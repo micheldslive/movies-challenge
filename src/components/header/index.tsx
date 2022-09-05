@@ -3,6 +3,7 @@ import Search from '@/components/search'
 import WishlistIcon from '@/components/wishlistIcon'
 import MinicartIcon from '@/components/minicartIcon'
 import { Minicart } from '@/components/minicart'
+import { Wishlist } from '@/components/wishlist/'
 
 const Header = () => {
   return (
@@ -16,6 +17,7 @@ const Header = () => {
         </div>
       </section>
       <Minicart />
+      <Wishlist />
     </header>
   )
 }

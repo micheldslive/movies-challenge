@@ -43,19 +43,43 @@ export interface ICartContext {
 export interface ICartDefaultValues extends ICartContext {
   add(add: IMovieCart): void
   remove(id: number): void
+  increment(id: number): void
+  decrement(id: number): void
+  totalQuantityAndPrice(): ICartTotalQtdAndPrice
+}
+
+export interface ICartTotalQtdAndPrice {
+  quantity: number
+  total: number
 }
 
 export type TActionCartContext =
   | { type: 'add'; add: IMovieCart }
   | { type: 'remove'; remove: IMovieCart[] }
+  | { type: 'increment'; increment: IMovieCart[] }
+  | { type: 'decrement'; decrement: IMovieCart[] }
 
 export interface IMovieCart {
   id: number
   title: string
-  qtd: number
+  quantity: number
   price: number
   poster_path: string
 }
+
+// WISHLIST CONTEXT
+export interface IWishlistContext {
+  wishlist: IMovieCart[]
+}
+
+export interface IWishlistDefaultValues extends IWishlistContext {
+  add(add: IMovieCart): void
+  remove(id: number): void
+}
+
+export type TActionWishlistContext =
+  | { type: 'add'; add: IMovieCart }
+  | { type: 'remove'; remove: IMovieCart[] }
 
 // MOVIES DATA TYPES
 
