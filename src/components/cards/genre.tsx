@@ -1,4 +1,4 @@
-import { useStates } from '@/contexts/states'
+import { useStates } from '@/contexts'
 
 interface IGenreProps {
   genre_id: number

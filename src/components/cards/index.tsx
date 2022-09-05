@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { useStates } from '@/contexts/states'
-import { useMovies } from '@/contexts/movies'
+import { useStates, useMovies } from '@/contexts'
 import { Card } from './card'
 import CircularProgress from '@mui/material/CircularProgress'
 
