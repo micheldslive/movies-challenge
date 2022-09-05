@@ -1,12 +1,13 @@
-import { memo } from 'react'
-import CartIcon from '@mui/icons-material/ShoppingCart'
+import { useStates } from '@/contexts'
+import { Drawer } from '@mui/material'
+import MinicartContent from './minicart'
 
-const Minicart = () => {
+export const Minicart = () => {
+  const { setCartOpen, cartOpen } = useStates()
+
   return (
-    <a className='minicart' aria-label='link'>
-      <CartIcon aria-label='svg' />
-    </a>
+    <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
+      <MinicartContent />
+    </Drawer>
   )
 }
-
-export default memo(Minicart)

@@ -7,13 +7,12 @@ import { CardActionArea, Box } from '@mui/material'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { RevealContent } from './reveal'
 import moment from 'moment'
-import Placeholder from '@/assets/placeholder.png'
-import 'react-lazy-load-image-component/src/effects/blur.css'
 import { Genre } from './genre'
-import Price from './price'
-import { AddButton } from '../add'
-import { ImagePath } from '../../core/utils/imagePath'
-import { getPrice } from '../../core/utils/price'
+import Price from '@/components/price'
+import { AddButton } from '@/components/add'
+import { ImagePath } from '@/core/utils/imagePath'
+import { getPrice } from '@/core/utils/price'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 export const Card = ({ results }: IMoviesResults) => {
   return (
@@ -29,7 +28,6 @@ export const Card = ({ results }: IMoviesResults) => {
                       className='image'
                       effect='blur'
                       src={ImagePath(poster_path)}
-                      placeholderSrc={Placeholder}
                       alt={title}
                     />
                     <Box className='card-date' component='span'>

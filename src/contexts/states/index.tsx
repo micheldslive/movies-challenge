@@ -9,6 +9,8 @@ import api from '@/core/api'
 
 const initialStates: IStateContext = {
   search: '',
+  wishlistOpen: false,
+  cartOpen: false,
   genres: [],
 }
 
@@ -22,6 +24,10 @@ const reducer = (state: IStateContext, action: TActionStateContext) => {
   switch (action.type) {
     case 'search':
       return { ...state, search: action.search }
+    case 'wishlistOpen':
+      return { ...state, wishlistOpen: action.wishlistOpen }
+    case 'cartOpen':
+      return { ...state, cartOpen: action.cartOpen }
     case 'genres':
       return { ...state, genres: action.genres }
     default:
@@ -32,11 +38,18 @@ const reducer = (state: IStateContext, action: TActionStateContext) => {
 const StateProvider = ({ children }: IChildren) => {
   const [state, dispatch] = useReducer(reducer, initialStates)
 
+  // STATES SETTERS
   const setSearch = (search: string) => {
     dispatch({ type: 'search', search })
   }
+  const setWishlistOpen = (wishlistOpen: boolean) => {
+    dispatch({ type: 'wishlistOpen', wishlistOpen })
+  }
+  const setCartOpen = (cartOpen: boolean) => {
+    dispatch({ type: 'cartOpen', cartOpen })
+  }
 
-  // API GETTERS
+  // API GETTER
   const getGenres = async () => {
     const { data } = await api.getAllGenres()
 
@@ -48,7 +61,9 @@ const StateProvider = ({ children }: IChildren) => {
   }, [])
 
   return (
-    <StateContext.Provider value={{ ...state, setSearch }}>
+    <StateContext.Provider
+      value={{ ...state, setSearch, setWishlistOpen, setCartOpen }}
+    >
       {children}
     </StateContext.Provider>
   )
