@@ -5,15 +5,21 @@ export interface IChildren {
 // STATES CONTEXT
 export interface IStateContext {
   search: string
+  wishlistOpen: boolean
+  cartOpen: boolean
   genres: IGenres[]
 }
 
 export interface IStateDefaultValues extends IStateContext {
   setSearch(search: string): void
+  setWishlistOpen(wishlistOpen: boolean): void
+  setCartOpen(carttOpen: boolean): void
 }
 
 export type TActionStateContext =
   | { type: 'search'; search: string }
+  | { type: 'wishlistOpen'; wishlistOpen: boolean }
+  | { type: 'cartOpen'; cartOpen: boolean }
   | { type: 'genres'; genres: IGenres[] }
 
 // MOVIES CONTEXT

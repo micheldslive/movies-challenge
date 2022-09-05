@@ -1,9 +1,9 @@
 import { getRenderer } from '@/core/tests/helpers'
-import Minicart from './index'
+import MinicartIcon from './index'
 
-describe('<Minicart />', () => {
-  it('should have a link and svg element on Minicart', () => {
-    const { getByLabelText } = getRenderer(<Minicart />)
+describe('<MinicartIcon />', () => {
+  it('should have a link and svg element on MinicartIcon', () => {
+    const { getByLabelText } = getRenderer(<MinicartIcon />)
 
     const link = getByLabelText('link')
     const svg = getByLabelText('svg')

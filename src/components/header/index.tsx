@@ -1,7 +1,8 @@
 import Logo from '@/components/logo'
 import Search from '@/components/search'
-import Wishlist from '@/components/wishlist'
-import Minicart from '@/components/minicart'
+import WishlistIcon from '@/components/wishlistIcon'
+import MinicartIcon from '@/components/minicartIcon'
+import { Minicart } from '@/components/minicart'
 
 const Header = () => {
   return (
@@ -10,10 +11,11 @@ const Header = () => {
         <Logo />
         <Search />
         <div className='buttons-content'>
-          <Wishlist />
-          <Minicart />
+          <WishlistIcon />
+          <MinicartIcon />
         </div>
       </section>
+      <Minicart />
     </header>
   )
 }
