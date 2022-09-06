@@ -13,7 +13,7 @@ export const CartItem = ({ item }: CartItemProps) => {
   return (
     <div className='cartItem-container'>
       <div className='cartItem-content'>
-        <img src={ImagePath(item.poster_path)} />
+        <img className='cartItem-image' src={ImagePath(item.poster_path)} />
         <span>{item.title}</span>
       </div>
       <div>{item.quantity}</div>

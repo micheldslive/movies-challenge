@@ -2,7 +2,7 @@ import { memo } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { useStates } from '@/contexts'
 
-const WishlistIcon = () => {
+export const WishlistIcon = () => {
   const { wishlistOpen, setWishlistOpen } = useStates()
 
   return (
@@ -15,5 +15,3 @@ const WishlistIcon = () => {
     </a>
   )
 }
-
-export default memo(WishlistIcon)
