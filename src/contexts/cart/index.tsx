@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer } from 'react'
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react'
 import {
   IChildren,
   ICartContext,
@@ -6,6 +12,7 @@ import {
   TActionCartContext,
   IMovieCart,
 } from '@/core/types'
+import { LocalStorage } from '@/core/localStorage'
 
 const initialCarts: ICartContext = {
   cart: [],
@@ -21,6 +28,8 @@ const reducer = (state: ICartContext, action: TActionCartContext) => {
   switch (action.type) {
     case 'add':
       return { ...state, cart: [...state.cart, action.add] }
+    case 'addStorage':
+      return { ...state, cart: action.addStorage }
     case 'remove':
       return { ...state, cart: action.remove }
     case 'increment':
@@ -33,7 +42,9 @@ const reducer = (state: ICartContext, action: TActionCartContext) => {
 }
 
 const CartProvider = ({ children }: IChildren) => {
-  const [states, dispatch] = useReducer(reducer, initialCarts)
+  const [states, dispatch] = useReducer(reducer, initialCarts),
+    local = new LocalStorage(),
+    key = 'cart'
 
   const add = (add: IMovieCart) => {
     dispatch({ type: 'add', add })
@@ -42,6 +53,10 @@ const CartProvider = ({ children }: IChildren) => {
   const remove = (id: number) => {
     const remove = states.cart.filter((item) => item.id !== id)
     dispatch({ type: 'remove', remove })
+  }
+
+  const addStorage = (addStorage: IMovieCart[]) => {
+    dispatch({ type: 'addStorage', addStorage })
   }
 
   const increment = (id: number) => {
@@ -77,6 +92,15 @@ const CartProvider = ({ children }: IChildren) => {
 
     return { quantity, total }
   }
+
+  useEffect(() => {
+    const getCart = local.get(key)
+    getCart && addStorage(getCart)
+  }, [])
+
+  useEffect(() => {
+    states.cart.length && local.set(key, JSON.stringify(states.cart))
+  }, [states])
 
   return (
     <CartContext.Provider

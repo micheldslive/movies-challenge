@@ -55,6 +55,7 @@ export interface ICartTotalQtdAndPrice {
 
 export type TActionCartContext =
   | { type: 'add'; add: IMovieCart }
+  | { type: 'addStorage'; addStorage: IMovieCart[] }
   | { type: 'remove'; remove: IMovieCart[] }
   | { type: 'increment'; increment: IMovieCart[] }
   | { type: 'decrement'; decrement: IMovieCart[] }
@@ -79,6 +80,7 @@ export interface IWishlistDefaultValues extends IWishlistContext {
 
 export type TActionWishlistContext =
   | { type: 'add'; add: IMovieCart }
+  | { type: 'addStorage'; addStorage: IMovieCart[] }
   | { type: 'remove'; remove: IMovieCart[] }
 
 // MOVIES DATA TYPES
