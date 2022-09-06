@@ -23,7 +23,7 @@ export const Card = ({ results }: IMoviesResults) => {
           <React.Fragment key={id.toString()}>
             <RevealContent>
               <CardContainer className='card-content'>
-                <CardActionArea component='a'>
+                <CardActionArea component='div'>
                   <Box component='div' className='card-image'>
                     <LazyLoadImage
                       className='image'
