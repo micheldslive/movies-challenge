@@ -48,17 +48,13 @@ export const Cards = () => {
           </div>
 
           <div>
-            <button
-              ref={ref}
-              onClick={() => fetchNextPage()}
-              disabled={!hasNextPage || isFetchingNextPage}
-            >
+            <a ref={ref} onClick={() => fetchNextPage()}>
               {isFetchingNextPage && (
                 <div className='preloading'>
                   <CircularProgress className='progress' />
                 </div>
               )}
-            </button>
+            </a>
           </div>
         </>
       )}
