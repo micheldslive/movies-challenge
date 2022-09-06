@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, useContext, useEffect, useReducer } from 'react'
 import {
   IChildren,
   IWishlistContext,
@@ -6,6 +6,7 @@ import {
   TActionWishlistContext,
   IMovieCart,
 } from '@/core/types'
+import { LocalStorage } from '@/core/localStorage'
 
 const initialWishlists: IWishlistContext = {
   wishlist: [],
@@ -21,6 +22,8 @@ const reducer = (state: IWishlistContext, action: TActionWishlistContext) => {
   switch (action.type) {
     case 'add':
       return { ...state, wishlist: [...state.wishlist, action.add] }
+    case 'addStorage':
+      return { ...state, wishlist: action.addStorage }
     case 'remove':
       return { ...state, wishlist: action.remove }
     default:
@@ -29,16 +32,31 @@ const reducer = (state: IWishlistContext, action: TActionWishlistContext) => {
 }
 
 const WishlistProvider = ({ children }: IChildren) => {
-  const [states, dispatch] = useReducer(reducer, initialWishlists)
+  const [states, dispatch] = useReducer(reducer, initialWishlists),
+    local = new LocalStorage(),
+    key = 'wishlist'
 
   const add = (add: IMovieCart) => {
     dispatch({ type: 'add', add })
+  }
+
+  const addStorage = (addStorage: IMovieCart[]) => {
+    dispatch({ type: 'addStorage', addStorage })
   }
 
   const remove = (id: number) => {
     const remove = states.wishlist.filter((item) => item.id !== id)
     dispatch({ type: 'remove', remove })
   }
+
+  useEffect(() => {
+    const getCart = local.get(key)
+    getCart && addStorage(getCart)
+  }, [])
+
+  useEffect(() => {
+    states.wishlist.length && local.set(key, JSON.stringify(states.wishlist))
+  }, [states])
 
   return (
     <WishlistContext.Provider

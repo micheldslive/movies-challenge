@@ -19,9 +19,7 @@
   padding: 15px;
 
   .cart-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex(center, space-between, '', '', '');
 
     & a {
       cursor: pointer;
@@ -32,15 +30,14 @@
   .cartItems-container {
     padding: 20px 0;
     .cartItem-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      @include flex(center, space-between, '', '', '');
       padding: 10px 0;
 
       .cartItem-content {
         display: flex;
         align-items: center;
         gap: 10px;
+        @include flex(center, '', '', 0.6, '');
         & > img {
           min-width: 50px;
           max-height: 50px;
@@ -61,8 +58,7 @@
     }
 
     .empty-content {
-      display: flex;
-      justify-content: center;
+      @include flex('', center, '', '', '');
     }
   }
 }

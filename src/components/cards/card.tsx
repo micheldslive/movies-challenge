@@ -13,7 +13,7 @@ import { AddButton } from '@/components/add'
 import { ImagePath } from '@/core/utils/imagePath'
 import { getPrice } from '@/core/utils/price'
 import 'react-lazy-load-image-component/src/effects/blur.css'
-import { AddFavorite } from '../add-wishlist'
+import { AddFavorite } from '@/components/add-wishlist'
 
 export const Card = ({ results }: IMoviesResults) => {
   return (
@@ -57,10 +57,20 @@ export const Card = ({ results }: IMoviesResults) => {
                     alignItems='center'
                     flexDirection='column'
                   >
-                    <Typography gutterBottom variant='h6' component='h6'>
+                    <Typography
+                      gutterBottom
+                      variant='h6'
+                      component='h6'
+                      className='card-title'
+                    >
                       {title}
                     </Typography>
-                    <Box component='span' display='flex' alignItems='center'>
+                    <Box
+                      component='span'
+                      display='flex'
+                      alignItems='center'
+                      gap={1}
+                    >
                       <StarIcon />
                       <Genre genre_id={genre_ids[0]} />
                     </Box>
