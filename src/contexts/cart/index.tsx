@@ -33,6 +33,8 @@ const reducer = (state: ICartContext, action: TActionCartContext) => {
       return { ...state, cart: action.addStorage }
     case 'remove':
       return { ...state, cart: action.remove }
+    case 'removeAll':
+      return { ...state, cart: action.remove }
     case 'increment':
       return { ...state, cart: action.increment }
     case 'decrement':
@@ -61,6 +63,11 @@ const CartProvider = ({ children }: IChildren) => {
   const remove = (id: number) => {
     const remove = states.cart.filter((item) => item.id !== id)
     dispatch({ type: 'remove', remove })
+  }
+
+  const removeAll = () => {
+    dispatch({ type: 'remove', remove: [] })
+    local.remove(key)
   }
 
   const addStorage = (addStorage: IMovieCart[]) => {
@@ -116,6 +123,7 @@ const CartProvider = ({ children }: IChildren) => {
         ...states,
         add,
         remove,
+        removeAll,
         increment,
         decrement,
         totalQuantityAndPrice,
