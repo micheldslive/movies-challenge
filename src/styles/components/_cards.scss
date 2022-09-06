@@ -11,6 +11,18 @@
   .cards-content {
     @include grid(grid-template-columns, 4, 1fr, 2, 2);
 
+    @media (max-width: 1024px) {
+      @include grid(grid-template-columns, 3, 1fr, 2, 2);
+    }
+
+    @media (max-width: 640px) {
+      @include grid(grid-template-columns, 2, 1fr, 2, 2);
+    }
+
+    @media (max-width: 480px) {
+      @include grid(grid-template-columns, 1, 1fr, 2, 2);
+    }
+
     .card-content {
       & span.blur {
         width: 100%;

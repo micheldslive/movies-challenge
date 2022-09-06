@@ -105,8 +105,6 @@ $breakpoints: (
   '1280': 1280px,
 );
 
-// @include ps(color1, color2);
-
 @mixin mq($width, $type: min) {
   @if map_has_key($breakpoints, $width) {
     $width: map_get($breakpoints, $width);
