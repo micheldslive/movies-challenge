@@ -32,7 +32,7 @@ Projeto realizado para teste de Front-End. O objetivo da aplicação é consumir
 
 O projeto foi desenvolvido com as seguintes tecnologias:
 
-- [ViteJS](https://nextjs.org/)
+- [ViteJS](https://vitejs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [SASS](https://sass-lang.com/)
 - [Jest](https://jestjs.io/)
@@ -43,7 +43,12 @@ O projeto foi desenvolvido com as seguintes tecnologias:
 - [Husky](https://github.com/typicode/husky)
 - [Axios](https://axios-http.com/)
 - [Docker](https://www.docker.com/)
-- [framer-motion](https://www.framer.com/motion/)
+- [react-awesome-reveal](https://www.npmjs.com/package/react-awesome-reveal)
+- [react-lazy-load](https://www.npmjs.com/package/react-lazy-load-image-component)
+- [@emotion/styled](https://emotion.sh/docs/introduction)
+- [material-ui](https://mui.com/pt/)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [react-query](https://www.npmjs.com/package/react-query)
 
 ---
 
