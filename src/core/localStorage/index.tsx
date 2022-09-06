@@ -9,4 +9,8 @@ export class LocalStorage {
   set(key: string, data: string): void {
     localStorage.setItem(key, data)
   }
+
+  remove(key: string): void {
+    localStorage.removeItem(key)
+  }
 }

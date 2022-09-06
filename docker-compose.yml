@@ -1,0 +1,9 @@
+version: "3.6"
+
+services:
+  vite:
+    ports:
+      - 3000:3000
+    build:
+      context: .
+      dockerfile: Dockerfile

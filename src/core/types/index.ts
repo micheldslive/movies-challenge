@@ -1,3 +1,5 @@
+import React, { SetStateAction } from 'react'
+
 export interface IChildren {
   children: React.ReactNode
 }
@@ -43,6 +45,7 @@ export interface ICartContext {
 export interface ICartDefaultValues extends ICartContext {
   add(add: IMovieCart): void
   remove(id: number): void
+  removeAll(): void
   increment(id: number): void
   decrement(id: number): void
   totalQuantityAndPrice(): ICartTotalQtdAndPrice
@@ -57,6 +60,7 @@ export type TActionCartContext =
   | { type: 'add'; add: IMovieCart }
   | { type: 'addStorage'; addStorage: IMovieCart[] }
   | { type: 'remove'; remove: IMovieCart[] }
+  | { type: 'removeAll'; remove: IMovieCart[] }
   | { type: 'increment'; increment: IMovieCart[] }
   | { type: 'decrement'; decrement: IMovieCart[] }
 
@@ -82,6 +86,25 @@ export type TActionWishlistContext =
   | { type: 'add'; add: IMovieCart }
   | { type: 'addStorage'; addStorage: IMovieCart[] }
   | { type: 'remove'; remove: IMovieCart[] }
+
+// CHECKOUT CONTEXT
+// export interface ICheckoutContext {
+//   checkout: ICheckoutRegister
+// }
+export interface ICheckoutContext {
+  name: string
+  cpf: string
+  phone: string
+  email: string
+  cep: string
+  address: string
+  city: string
+  state: string
+}
+
+export interface ICheckoutDefaultValues extends ICheckoutContext {
+  setState: React.Dispatch<SetStateAction<ICheckoutContext>>
+}
 
 // MOVIES DATA TYPES
 
