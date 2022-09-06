@@ -7,9 +7,29 @@
 }
 
 .card-add-favorite-container {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+  &::before {
+    content: '';
+    display: block;
+    @include ps(absolute, 0, '', '', 0);
+    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+    width: 100%;
+    height: 70px;
+  }
+
+  width: 100%;
+  @include ps(absolute, 0, '', '', 0);
+
+  .card-add-favorite {
+    @include ps(absolute, 1rem, '', '', 1rem);
+    color: transparent;
+    stroke: $white;
+
+    transition: 0.3s;
+    &.favorited {
+      color: $purple;
+      stroke: $purple;
+    }
+  }
 }
 
 .wishlist-container {
@@ -38,9 +58,7 @@
       padding: 10px 0;
 
       .wishlistItem-content {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        @include flex(center, '', '', 0.6, '');
         & > img {
           min-width: 50px;
           max-height: 50px;
@@ -61,8 +79,7 @@
     }
 
     .empty-content {
-      display: flex;
-      justify-content: center;
+      @include flex('', center, '', '', '');
     }
   }
 }
