@@ -7,6 +7,7 @@ import {
   IMovieCart,
 } from '@/core/types'
 import { LocalStorage } from '@/core/localStorage'
+import { toast } from 'react-toastify'
 
 const initialWishlists: IWishlistContext = {
   wishlist: [],
@@ -38,6 +39,7 @@ const WishlistProvider = ({ children }: IChildren) => {
 
   const add = (add: IMovieCart) => {
     dispatch({ type: 'add', add })
+    toast.success(`Filme ${add.title}, adicionado aos Favoritos.`)
   }
 
   const addStorage = (addStorage: IMovieCart[]) => {
