@@ -3,6 +3,7 @@ interface IMapedPrices {
 }
 
 export const prices: IMapedPrices = {
+  0: 9.99,
   1: 19.99,
   2: 29.99,
   3: 39.99,

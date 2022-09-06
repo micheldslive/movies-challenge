@@ -1,6 +1,6 @@
 import { useCart } from '@/contexts'
 import CartItem from '@/components/minicart/item'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { CheckoutFooter } from './footer'
 import ReactInputMask from 'react-input-mask'
 import { SubmitHandler, useForm } from 'react-hook-form'

@@ -1,8 +1,10 @@
+import { memo } from 'react'
 import { ToastContainer } from 'react-toastify'
 
-export const Toast = () => {
+const Toast = () => {
   return (
     <ToastContainer
+      aria-label='toast'
       position='top-left'
       autoClose={3000}
       hideProgressBar={false}
@@ -15,3 +17,5 @@ export const Toast = () => {
     />
   )
 }
+
+export default memo(Toast)

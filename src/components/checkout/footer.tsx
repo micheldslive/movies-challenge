@@ -1,7 +1,5 @@
-import { useCart, useStates } from '@/contexts'
-import { useNavigate } from 'react-router-dom'
+import { useCart } from '@/contexts'
 import { formatPrice } from '@/core/utils'
-import { useState } from 'react'
 import { CircularProgress } from '@mui/material'
 
 interface ICheckoutFooter {
