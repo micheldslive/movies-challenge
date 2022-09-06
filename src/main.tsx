@@ -8,6 +8,7 @@ import {
   StateProvider,
   CartProvider,
   WishlistProvider,
+  CheckoutProvider,
 } from './contexts'
 
 const queryClient = new QueryClient()
@@ -15,7 +16,13 @@ const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <AllProviders
-      with={[MovieProvider, StateProvider, CartProvider, WishlistProvider]}
+      with={[
+        MovieProvider,
+        StateProvider,
+        CartProvider,
+        WishlistProvider,
+        CheckoutProvider,
+      ]}
     >
       <QueryClientProvider client={queryClient}>
         <App />

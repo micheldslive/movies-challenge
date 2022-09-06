@@ -1,8 +1,10 @@
+import CheckoutForm from '@/components/checkout'
+
 const Checkout = () => {
   return (
-    <div>
-      <p>CART</p>
-    </div>
+    <section>
+      <CheckoutForm />
+    </section>
   )
 }
 
