@@ -50,6 +50,8 @@ O projeto foi desenvolvido com as seguintes tecnologias:
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 - [react-query](https://www.npmjs.com/package/react-query)
 - [react-toastify](https://www.npmjs.com/package/react-toastify)
+- [react-hook-form](https://www.npmjs.com/package/react-hook-form)
+- [react-input-mask](https://www.npmjs.com/package/react-input-mask)
 
 ---
 
