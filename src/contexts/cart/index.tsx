@@ -13,6 +13,7 @@ import {
   IMovieCart,
 } from '@/core/types'
 import { LocalStorage } from '@/core/localStorage'
+import { toast } from 'react-toastify'
 
 const initialCarts: ICartContext = {
   cart: [],
@@ -47,7 +48,14 @@ const CartProvider = ({ children }: IChildren) => {
     key = 'cart'
 
   const add = (add: IMovieCart) => {
-    dispatch({ type: 'add', add })
+    const cartItem = states.cart.find(({ id }) => id === add.id)
+
+    if (cartItem) {
+      toast.error(`Filme ${add.title}, já foi adicionado ao carrinho.`)
+    } else {
+      dispatch({ type: 'add', add })
+      toast.success(`Filme ${add.title}, adicionado ao carrinho.`)
+    }
   }
 
   const remove = (id: number) => {
@@ -86,7 +94,7 @@ const CartProvider = ({ children }: IChildren) => {
       0,
     )
     const total = cart.reduce(
-      (acumulator, actual) => acumulator + actual.price,
+      (acumulator, actual) => acumulator + actual.price * actual.quantity,
       0,
     )
 
