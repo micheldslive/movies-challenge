@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { formatPrice, getPrice } from '@/core/utils/price'
+import { formatPrice, getPrice } from '@/core/utils'
 
 interface IPriceProps {
   rating: number

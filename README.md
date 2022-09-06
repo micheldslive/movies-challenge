@@ -49,6 +49,7 @@ O projeto foi desenvolvido com as seguintes tecnologias:
 - [material-ui](https://mui.com/pt/)
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 - [react-query](https://www.npmjs.com/package/react-query)
+- [react-toastify](https://www.npmjs.com/package/react-toastify)
 
 ---
 

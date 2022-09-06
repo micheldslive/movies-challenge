@@ -14,6 +14,10 @@
       outline: none;
     }
 
+    @media (max-width: 740px) {
+      width: 100%;
+    }
+
     &::placeholder {
       color: $grey-2;
     }

@@ -10,8 +10,8 @@ import moment from 'moment'
 import { Genre } from './genre'
 import Price from '@/components/price'
 import { AddButton } from '@/components/add'
-import { ImagePath } from '@/core/utils/imagePath'
-import { getPrice } from '@/core/utils/price'
+import { ImagePath } from '@/core/utils'
+import { getPrice } from '@/core/utils'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { AddFavorite } from '@/components/add-wishlist'
 
@@ -22,7 +22,7 @@ export const Card = ({ results }: IMoviesResults) => {
         ({ id, poster_path, title, release_date, genre_ids, vote_average }) => (
           <React.Fragment key={id.toString()}>
             <RevealContent>
-              <CardContainer sx={{ maxWidth: 345 }} className='card-content'>
+              <CardContainer className='card-content'>
                 <CardActionArea component='a'>
                   <Box component='div' className='card-image'>
                     <LazyLoadImage

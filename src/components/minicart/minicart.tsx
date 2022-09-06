@@ -1,6 +1,7 @@
 import { useCart, useStates } from '@/contexts'
 import CloseIcon from '@mui/icons-material/Close'
 import React from 'react'
+import { MinicartFooter } from './footer'
 import CartItem from './item'
 
 const MinicartContent = () => {
@@ -15,16 +16,19 @@ const MinicartContent = () => {
         </a>
         <h3>Meu Carrinho</h3>
       </div>
-      <div className='cartItems-container'>
-        {cart.length ? (
-          cart.map((item) => (
-            <React.Fragment key={item.id.toString()}>
-              <CartItem item={item} />
-            </React.Fragment>
-          ))
-        ) : (
-          <span className='empty-content'>Carrinho vazio</span>
-        )}
+      <div className='cart-content'>
+        <div className='cartItems-container'>
+          {cart.length ? (
+            cart.map((item) => (
+              <React.Fragment key={item.id.toString()}>
+                <CartItem item={item} />
+              </React.Fragment>
+            ))
+          ) : (
+            <span className='empty-content'>Carrinho vazio</span>
+          )}
+        </div>
+        <MinicartFooter />
       </div>
     </div>
   )

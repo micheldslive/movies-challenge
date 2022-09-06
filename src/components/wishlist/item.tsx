@@ -1,6 +1,9 @@
 import { IMovieCart } from '@/core/types'
-import { useWishlist } from '@/contexts'
+import { useCart, useWishlist } from '@/contexts'
 import DeleteIcon from '@mui/icons-material/Delete'
+import { ImagePath } from '@/core/utils'
+import { formatPrice } from '@/core/utils'
+import CartIcon from '@mui/icons-material/ShoppingCart'
 
 type WishlistItemItemProps = {
   item: IMovieCart
@@ -8,14 +11,20 @@ type WishlistItemItemProps = {
 
 export const WishlistItem = ({ item }: WishlistItemItemProps) => {
   const { remove } = useWishlist()
+  const { add } = useCart()
 
   return (
     <div className='wishlistItem-container'>
       <div className='wishlistItem-content'>
-        <img src={`https://image.tmdb.org/t/p/w400${item.poster_path}`} />
+        <img src={ImagePath(item.poster_path)} />
         <span>{item.title}</span>
       </div>
-      <div>{item.quantity}</div>
+      <div>{formatPrice(item.price)}</div>
+      <div>
+        <a onClick={() => add(item)} className='wishlistItem-add-cart'>
+          <CartIcon />
+        </a>
+      </div>
       <a onClick={() => remove(item.id)} className='wishlistItem-remove'>
         <DeleteIcon />
       </a>
