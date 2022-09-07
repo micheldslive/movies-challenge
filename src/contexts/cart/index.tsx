@@ -14,6 +14,7 @@ import {
 } from '@/core/types'
 import { LocalStorage } from '@/core/localStorage'
 import { toast } from 'react-toastify'
+import { removeItem } from '../../core/utils'
 
 const initialCarts: ICartContext = {
   cart: [],
@@ -61,7 +62,7 @@ const CartProvider = ({ children }: IChildren) => {
   }
 
   const remove = (id: number) => {
-    const remove = states.cart.filter((item) => item.id !== id)
+    const remove = removeItem(states.cart, id)
     dispatch({ type: 'remove', remove })
   }
 
@@ -78,29 +79,33 @@ const CartProvider = ({ children }: IChildren) => {
     const { cart } = states
     const index = cart.findIndex((item) => item.id === id)
 
-    if (index !== -1) {
-      cart[index].quantity ? (cart[index].quantity += 1) : ''
-      dispatch({ type: 'increment', increment: cart })
-    }
+    if (index === -1) return
+
+    cart[index].quantity ? (cart[index].quantity += 1) : ''
+    dispatch({ type: 'increment', increment: cart })
   }
 
   const decrement = (id: number) => {
     const { cart } = states
     const index = cart.findIndex((item) => item.id === id)
 
-    if (index !== -1) {
-      cart[index].quantity === 1 ? remove(id) : (cart[index].quantity -= 1)
+    if (index === -1) return
+
+    if (cart[index].quantity === 1) {
+      const remove = removeItem(states.cart, id)
+      dispatch({ type: 'remove', remove })
+    } else {
+      cart[index].quantity -= 1
       dispatch({ type: 'decrement', decrement: cart })
     }
   }
 
-  const totalQuantityAndPrice = () => {
-    const { cart } = states
-    const quantity = cart.reduce(
+  function totalQuantityAndPrice() {
+    const quantity = states.cart?.reduce(
       (acumulator, actual) => acumulator + actual.quantity,
       0,
     )
-    const total = cart.reduce(
+    const total = states.cart?.reduce(
       (acumulator, actual) => acumulator + actual.price * actual.quantity,
       0,
     )
