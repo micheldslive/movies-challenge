@@ -14,7 +14,7 @@
 
 Projeto realizado para teste de Front-End. O objetivo da aplicação é consumir dados da api do TMDB e criar uma loja com lista de produtos, carrinho, favoritos e checkout.
 
-<h4 align="center">Layout (invision): <a href="https://whimsical.com/prototipo-prova-dot-front-end-pleno-7bF8gFqUvTpoENiGgUXkyw">https://whimsical.com/prototipo-prova-dot-front-end-pleno-7bF8gFqUvTpoENiGgUXkyw.</a></h4>
+<h4 align="center">Layout: <a href="https://whimsical.com/prototipo-prova-dot-front-end-pleno-7bF8gFqUvTpoENiGgUXkyw">https://whimsical.com/prototipo-prova-dot-front-end-pleno-7bF8gFqUvTpoENiGgUXkyw.</a></h4>
 
 <p align="center">
   <img src="./.github/demo.gif" />
