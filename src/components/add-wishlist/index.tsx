@@ -20,7 +20,7 @@ export const AddFavorite = ({ item }: IAddButtonProps) => {
     <div className='card-add-favorite-container'>
       <a
         onClick={() => handleClick()}
-        className={cn('card-add-favorite', isAdded && 'favorited')}
+        className={cn('card-add-favorite', !isAdded && 'favorited')}
       >
         <Favorite fontSize='large' />
       </a>
