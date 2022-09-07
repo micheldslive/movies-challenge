@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from 'react'
+import { createContext, useContext, useEffect, useReducer, useRef } from 'react'
 import {
   IChildren,
   IWishlistContext,
@@ -34,6 +34,7 @@ const reducer = (state: IWishlistContext, action: TActionWishlistContext) => {
 
 const WishlistProvider = ({ children }: IChildren) => {
   const [states, dispatch] = useReducer(reducer, initialWishlists),
+    initialRender = useRef(true),
     local = new LocalStorage(),
     key = 'wishlist'
 
@@ -52,12 +53,14 @@ const WishlistProvider = ({ children }: IChildren) => {
   }
 
   useEffect(() => {
-    const getCart = local.get(key)
-    getCart && addStorage(getCart)
+    const getWishlist = local.get(key)
+    getWishlist && addStorage(getWishlist)
   }, [])
 
   useEffect(() => {
-    states.wishlist.length && local.set(key, JSON.stringify(states.wishlist))
+    initialRender.current
+      ? (initialRender.current = false)
+      : local.set(key, JSON.stringify(states.wishlist))
   }, [states])
 
   return (

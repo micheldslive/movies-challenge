@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from 'react'
+import { createContext, useContext, useEffect, useReducer, useRef } from 'react'
 import {
   IChildren,
   ICartContext,
@@ -14,7 +8,7 @@ import {
 } from '@/core/types'
 import { LocalStorage } from '@/core/localStorage'
 import { toast } from 'react-toastify'
-import { removeItem } from '../../core/utils'
+import { removeItem } from '@/core/utils'
 
 const initialCarts: ICartContext = {
   cart: [],
@@ -47,6 +41,7 @@ const reducer = (state: ICartContext, action: TActionCartContext) => {
 
 const CartProvider = ({ children }: IChildren) => {
   const [states, dispatch] = useReducer(reducer, initialCarts),
+    initialRender = useRef(true),
     local = new LocalStorage(),
     key = 'cart'
 
@@ -63,6 +58,7 @@ const CartProvider = ({ children }: IChildren) => {
 
   const remove = (id: number) => {
     const remove = removeItem(states.cart, id)
+    local.set(key, JSON.stringify(states.cart))
     dispatch({ type: 'remove', remove })
   }
 
@@ -119,7 +115,9 @@ const CartProvider = ({ children }: IChildren) => {
   }, [])
 
   useEffect(() => {
-    states.cart.length && local.set(key, JSON.stringify(states.cart))
+    initialRender.current
+      ? (initialRender.current = false)
+      : local.set(key, JSON.stringify(states.cart))
   }, [states])
 
   return (
